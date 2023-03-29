@@ -1,0 +1,60 @@
+{% extends 'account/generic_account_template.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block page_title %}
+Редактирование профиля
+{% endblock %}
+
+{% block content %}
+  <div id="profile-edit-area">
+    <form action="." method="POST">
+        {% csrf_token %}
+    <div id="edit-area-left">
+        <table>
+          <tbody>
+            <tr>
+              <td class="edit-title">Фамилия:</td>
+              <td><input type="text" class="profileInputBox" name="second_name" value="{{user.second_name|default_if_none:""}}"/></td>
+            </tr>
+            <tr>
+              <td class="edit-title">Имя:</td>
+              <td><input type="text" class="profileInputBox" name="first_name" value="{{user.first_name|default_if_none:""}}"/></td>
+            </tr>
+            <tr>
+              <td class="edit-title">Отчество:</td>
+              <td><input type="text" class="profileInputBox" name="patronymic" value="{{user.patronymic|default_if_none:""}}"/></td>
+            </tr>
+            <tr>
+              <td class="edit-title">E-mail:</td>
+              <td><input type="text" class="profileInputBox" name="email" value="{{user.email|default_if_none:""}}" ></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div id="edit-area-right">
+      <table>
+          <tbody>
+            <tr>
+              <td class="edit-title">Телефон:</td>
+              <td><input type="text" class="profileInputBox" name="phone" value="{{user.phone|default_if_none:""}}"/></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="main">
+    <div id="profile-edit-save">
+        <button id="editSave">Сохранить профиль</button>
+    </div>
+</div>
+  </form>
+  </div>
+{% endblock %}
+
+
+{% block scripts_footer %}
+
+{% endblock %}

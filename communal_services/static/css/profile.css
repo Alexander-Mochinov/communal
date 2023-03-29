@@ -1,0 +1,68 @@
+
+
+  #editSave {
+    display:block;
+    margin: 0 auto;
+    border:none;
+    border-radius:5px;
+    padding:10px 20px;
+    background-color:#2699c7;
+    color:#fff;
+    font-size:14px;
+    outline: none;
+  }
+  
+  #profile-edit-area {
+    width:800px;
+    margin: 0 auto;
+  }
+  
+  #edit-area-left, #edit-area-right {
+    box-sizing:border-box;
+  }
+  
+  #edit-area-left {
+    width:400px;
+    morgin:0;
+    float:left;
+  }
+  
+  #edit-area-right {
+    width:400px;
+    margin-left:400px;
+  }
+  #profile-edit-area {
+    margin: 50px auto 10px;
+  }
+  
+  #profile-edit-area table {
+    margin: 0 auto 10px;
+    vertical-align:top;
+  }
+  
+  #profile-edit-area table tr {
+    vertical-align:top;
+  }
+  
+  .edit-title {
+    padding-top:15px;
+  }
+  
+  .profileInputBox {
+      width:200px;
+        height:auto;
+        margin:10px;
+        padding:10px;
+        border:none;
+        border-radius:10px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        background-color:rgb(255, 255, 255);
+        font-size:16px;
+        color:rgb(63, 63, 63);
+        outline: none;
+  }
+  
+  #edit-area-right textarea {
+    height:200px;
+    resize:none;
+  }

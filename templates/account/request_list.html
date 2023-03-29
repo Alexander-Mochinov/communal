@@ -1,0 +1,75 @@
+{% extends 'account/generic_account_template.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/request-table.css' %}">
+{% endblock %}
+
+
+{% block page_title %}
+Заявки
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+<div class="table-responsive">
+	<table>
+		<thead>
+			<tr>
+				<th>Номер заявки</th>
+				<th>Заголовок</th>
+				<th>Тип заявки</th>
+				<th>Статус</th>
+				<th>Дата создания</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for request in requests %}
+			<tr>
+				<td><a href="{% url 'request_detail' request.number %}">{{ request.number }}</a></td>
+				<td>{{ request.title }}</td>
+				<td>{{ request.type_request }}</td>
+				<td>{{ request.get_status_display }}</td>
+				<td>{{ request.date_create }}</td>
+			</tr>
+            {% endfor %}
+		</tbody>
+	</table>
+</div>
+
+
+  </form>
+
+
+<section class="form-section">
+	<form method="POST" action="{% url 'request_list' %}">
+		{% csrf_token %}
+		<h2 class="form-section-heading">Отправить заявку</h2>
+
+		<div class="field-wrap">
+		<div class="field">
+			<label class="label">Заголовок</label>
+			<input class="input" type="text" name="title">
+		</div>
+		</div>
+
+		<div class="field-wrap">
+		<div class="field">
+			<label class="label">Обращение</label>
+			<textarea class="input" name="appeal"></textarea>
+		</div>
+		</div>
+		<button class="form__button button" type="submit">Отправить</button>
+	</form>
+</section>
+{% endblock %}
+
+
+{% block scripts_footer %}
+
+{% endblock %}

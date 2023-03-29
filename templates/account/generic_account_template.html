@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block scripts_header %}
+
+    {% endblock %}
+
+    {% block style %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    
+    <title>
+      {% block title %}
+
+      {% endblock %}
+    </title>
+  </head>
+  <body>
+    <main class="main">
+      <div class="responsive-wrapper">
+        <div class="main-header">
+          <h1>{% block page_title %}{% endblock %}</h1>
+          <div class="search">
+            <p>{{user.personal_account}}</p>
+          </div>
+        </div>
+        {% comment %} <div class="horizontal-tabs">
+          <a href="#">My details</a>
+          <a href="#">Profile</a>
+          <a href="#">Password</a>
+          <a href="#">Team</a>
+          <a href="#">Plan</a>
+          <a href="#">Billing</a>
+          <a href="#">Email</a>
+          <a href="#">Notifications</a>
+          <a href="#" class="active">Integrations</a>
+          <a href="#">API</a>
+        </div> {% endcomment %}
+        <div class="content">
+          <div class="content-panel">
+            <div class="vertical-tabs">
+              <a href="{% url 'request_list' %}">Заявки</a>
+              <a href="{% url 'indicators' %}">Внести показатели</a>
+              <a href="{% url 'profile_form' %}">Редактирование профиля</a>
+              <a href="{% url 'logout' %}">Выход</a>
+            </div>
+          </div>
+          <div class="content-main">
+            {% comment %} <div class="card-grid"> {% endcomment %}
+              {% comment %} <article class="card">
+                <div class="card-header">
+                  <div>
+                    <span><img src="https://assets.codepen.io/285131/zeplin.svg" /></span>
+                    <h3>Zeplin</h3>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" checked />
+                    <span></span>
+                  </label>
+                </div>
+                <div class="card-body">
+                  <p>Collaboration between designers and developers.</p>
+                </div>
+                <div class="card-footer">
+                  <a href="#">View integration</a>
+                </div>
+              </article>
+              <article class="card">
+                <div class="card-header">
+                  <div>
+                    <span><img src="https://assets.codepen.io/285131/github.svg" /></span>
+                    <h3>GitHub</h3>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" checked />
+                    <span></span>
+                  </label>
+                </div>
+                <div class="card-body">
+                  <p>Link pull requests and automate workflows.</p>
+                </div>
+                <div class="card-footer">
+                  <a href="#">View integration</a>
+                </div>
+              </article>
+              <article class="card">
+                <div class="card-header">
+                  <div>
+                    <span><img src="https://assets.codepen.io/285131/figma.svg" /></span>
+                    <h3>Figma</h3>
+                  </div>
+                  <label class="toggle">
+                    <input type="checkbox" checked />
+                    <span></span>
+                  </label>
+                </div>
+                <div class="card-body">
+                  <p>Embed file previews in projects.</p>
+                </div>
+                <div class="card-footer">
+                  <a href="#">View integration</a>
+                </div>
+              </article> {% endcomment %}
+            {% comment %} </div> {% endcomment %}
+
+            {% block content %}
+
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+    </main>
+
+    {% block scripts_footer %}
+
+    {% endblock %}
+  </body>
+</html>

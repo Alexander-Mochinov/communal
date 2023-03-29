@@ -1,0 +1,35 @@
+{% extends 'account/generic_account_template.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/request-detail.css' %}">
+{% endblock %}
+
+
+{% block page_title %}
+Заявка
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'request_list' %}"> <<- Вернуться к списку</a>
+    <h1>Обращение {{request.title}}</h1>
+    <h6>Дата создания: {{request.date_create}}</h6>
+    <h6>Статус: {{request.status}}</h6>
+    <p>
+        <h4>Содержимое обращения</h4>
+        {{request.appeal}}
+    </p>
+    <p>
+        {% if request.answer %}
+        <h4>Ответ</h4>
+        {{request.answer}}
+        {% else %}
+        <h4>Заявка ещё не обработана</h4>
+        {% endif %}
+    </p>
+
+{% endblock %}
+
+{% block scripts_footer %}
+
+{% endblock %}

@@ -1,0 +1,99 @@
+
+.posts {
+    display:flex;
+    flex-direction:column;
+  }
+  
+  .post {
+    background: #f1f1f1;  
+    display:flex;
+    margin-bottom:2.4rem;
+    border-radius:6px;
+  }
+  
+  .post-author {
+    width:20%;
+    display:flex;
+    flex-direction:column;
+  }
+  
+  .post-avatar {
+    margin:0 auto;
+    max-width:100px;
+  }
+  
+  .post-detail {
+    margin:1.2rem 2rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom:1.2rem;
+  }
+  
+  .post-content {
+    
+    flex:1;
+  }
+  
+  .post-date {
+    float: right;
+    text-align: left;
+    font-size:1.4rem;
+    line-height:2.4rem;
+    padding:1.2rem 2rem;
+  }
+  
+  .post-text {
+    padding:1.2rem 2rem;
+  }
+  
+  
+  
+  .flexitem-double {
+      width: calc(66.6667% - 20px);
+  }
+  
+  @media screen and (max-width: 1024px)
+  {
+  .grid {
+      flex-direction: column;
+      padding-top: 2.4rem;
+      margin: 0;
+  }
+  }
+  
+  @media screen and (max-width: 1024px) {
+  [class*="flexitem"] {
+      width: 100%;
+      margin: 0;
+  }
+  }
+  
+  @media screen and (max-width: 960px), (max-device-width: 1280px) and (orientation: landscape) {
+  .main {
+      padding: 0 1rem;
+  }
+  }
+  @media screen and (max-width: 960px) {
+  [class*="flexitem"] {
+      width: calc(100% - 1rem);
+  }
+  }
+  
+  
+  
+  @media screen and (max-width: 960px) {
+    .post {
+      flex-direction:column;
+    }
+    
+    .post-author, .post-content {
+      width:100%;
+    }
+    
+    .post-date {
+      float: none;
+      margin: 0 auto;
+      display: block;
+      text-align: center;
+    }
+  }

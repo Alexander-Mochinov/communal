@@ -1,0 +1,87 @@
+{% extends 'account/generic_account_template.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/indicators.css' %}">
+{% endblock %}
+
+
+{% block page_title %}
+Показатели
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+	<form class="row g-3" id="form" method="post" action="{% url 'indicators' %}">
+		{% csrf_token %}
+			<h3 style="text-align: center;">Форма адреса</h3>
+			<div class="col-12">
+				<label for="inputAddress" class="form-label">Город</label>
+				<input type="text" class="form-control" id="inputAddress" name="town" required>
+			</div>
+			<div class="col-12">
+				<label for="inputAddress" class="form-label">Улица</label>
+				<input type="text" class="form-control" id="inputAddress" name="street" required>
+			</div>
+			<div class="col-12">
+				<label for="inputAddress" class="form-label">Номер дома</label>
+				<input type="text" class="form-control" id="inputAddress" name="house" required>
+			</div>
+			<div class="col-12">
+				<label for="inputAddress" class="form-label">Номер квартиры</label>
+				<input type="text" class="form-control" id="inputAddress" name="apartment" required>
+			</div>
+		<div class="underline" style="margin-top: 130px;">
+			<h3 style="text-align: center;">Показатели</h3>
+			<div class="col-12">
+				<label for="inputAddress" class="form-label">Горячая вода</label>
+				<input type="text" class="form-control" id="inputAddress" name="INDICATORS_HOT_WATER" type="text" maxlength="15" value="">
+			</div>
+			<div class="col-12">
+				<label for="inputAddress" class="form-label">Холодная вода</label>
+				<input type="text" class="form-control" id="inputAddress" name="INDICATORS_COLD_WATER" type="text" maxlength="15" value="">
+			</div>
+			<div class="col-12">
+				<label for="inputAddress" class="form-label">Дневной период</label>
+				<input type="text" class="form-control" id="inputAddress" name="INDICATORS_LIGHT_DAY" type="text" maxlength="15" value="">
+			</div>
+			<div class="col-12">
+				<label for="inputAddress" class="form-label">Ночной период</label>
+				<input type="text" class="form-control" id="inputAddress" name="INDICATORS_LIGHT_NIGHT" type="text" maxlength="15" value="">
+			</div>
+		</div>
+
+    <button class="form__button button" type="submit">Отправить</button>
+	</form>
+</div>
+
+<table class="standard-table" cellspacing ="0">
+	<thead>
+	  <tr>
+		<th>Горячая вода</th>
+		<th>Холодная вода</th>
+		<th>Дневной период</th>
+		<th>Ночной период</th>
+		<th class="larger-box">Адрес по счётчику</th>
+	  </tr>
+	</thead>
+	<tbody>
+		{% for indicator in indicators %}
+		<tr>
+			<td>{{indicator.indicator}}</td>
+			<td>{{indicator.indicator}}</td>
+			<td>{{indicator.indicator}}</td>
+			<td>{{indicator.indicator}}</td>
+			<td>{{indicator.address.town}}, {{indicator.address.street}}, {{indicator.address.house}}, {{indicator.address.apartment}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+  </table>
+
+
+{% endblock %}
+
+{% block scripts_footer %}
+
+{% endblock %}
