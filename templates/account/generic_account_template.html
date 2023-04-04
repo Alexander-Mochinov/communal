@@ -20,12 +20,21 @@
     </title>
   </head>
   <body>
+    <header class="header">
+      <div class="header-content responsive-wrapper">
+        <div class="header-logo">
+          <a href="#">
+            <img src="{% static 'image/logo.png' %}" style="max-width: 10%;">
+          </a>
+        </div>
+      </div>
+    </header>
     <main class="main">
       <div class="responsive-wrapper">
         <div class="main-header">
           <h1>{% block page_title %}{% endblock %}</h1>
           <div class="search">
-            <p>{{user.personal_account}}</p>
+            <p>{{user.personal_account}}{% if user.first_name and user.second_name and user.patronymic %} / ({{  user.first_name }} {{ user.second_name }} {{ user.patronymic }}){% endif %}</p>
           </div>
         </div>
         {% comment %} <div class="horizontal-tabs">
@@ -118,5 +127,7 @@
     {% block scripts_footer %}
 
     {% endblock %}
+    <style>
+    </style>
   </body>
 </html>

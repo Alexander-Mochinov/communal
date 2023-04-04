@@ -13,7 +13,7 @@
 }
 	/* Default table */
 table {
-	border-collapse:collapse;
+
 	border-spacing:0;
 	-webkit-box-shadow:0px 7px 6px -6px rgba(0,0,0,.28);
 	   -moz-box-shadow:0px 7px 6px -6px rgba(0,0,0,.28);
@@ -26,14 +26,11 @@ table {
 table thead tr {border-bottom:3px solid #0085a6; color:#000;}
 table tfoot tr {border-top:3px solid #0085a6;}
 table thead th, table tfoot th {
-	background-color:#fff;
-	color:#000;
-	font-size:.83333em;
-	line-height:1.8;
-	padding: 15px 14px 13px 14px;
-	position:relative;
-	text-align:left;
-	text-transform:uppercase;	
+    font-size: 10px;
+    padding: 15px 14px 13px 14px;
+    position: relative;
+    text-align: left;
+    text-transform: uppercase;
 }
 table tbody tr {background-color:#fff;}
 table tbody tr:hover {background-color:#eee; color:#000;}

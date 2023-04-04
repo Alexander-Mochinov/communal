@@ -21,3 +21,6 @@ class Indicators(models.Model):
     counter = models.ForeignKey("services.Counter", on_delete=models.CASCADE, null=True)
     date_send = models.DateTimeField(verbose_name="Дата отправки", null=True, blank=True, auto_now_add=True)
     indicator = models.PositiveIntegerField(verbose_name="Показатель", default=0)
+
+    def __str__(self) -> str:
+        return f"{self.indicator}/{self.counter.get_name_display()}"

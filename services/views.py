@@ -1,6 +1,8 @@
 from datetime import datetime
+from itertools import zip_longest
 
 from django.http import HttpResponse
+
 from django.shortcuts import render
 from django.shortcuts import redirect
 
@@ -38,35 +40,13 @@ def request_list(request):
 def indicators(request):
 
     if request.method == "GET":
-        indicators = Indicators.objects.filter(
-            user__id=request.user.id
-        ).select_related(
-            "user", 
-            "address",
-            "counter",
-        )
 
+        indicators = Indicators.objects.filter(user=request.user)
+        grouped_queryset = zip_longest(*[iter(indicators)]*4, fillvalue=None)
+        result = [{'parameters': group} for group in grouped_queryset if group]
         context = {
-            "parameters": Counter.objects.all(),
-
-            "INDICATORS_HOT_WATER": Indicators.objects.filter(
-                counter__name = Counter.Parameter.INDICATORS_HOT_WATER.value
-            ).select_related("address"),
-
-            "INDICATORS_COLD_WATER": Indicators.objects.filter(
-                counter__name = Counter.Parameter.INDICATORS_COLD_WATER.value
-            ).select_related("address"),
-
-            "INDICATORS_LIGHT_DAY": Indicators.objects.filter(
-                counter__name = Counter.Parameter.INDICATORS_LIGHT_DAY.value
-            ).select_related("address"),
-
-            "INDICATORS_LIGHT_NIGHT": Indicators.objects.filter(
-                counter__name = Counter.Parameter.INDICATORS_LIGHT_NIGHT.value
-            ).select_related("address"),
-
+            "parameters": result,
         }
-
         return render(request, "account/indicators.html", context)
 
     if request.method == "POST":

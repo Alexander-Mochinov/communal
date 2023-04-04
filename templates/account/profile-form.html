@@ -10,48 +10,20 @@
 {% endblock %}
 
 {% block content %}
-  <div id="profile-edit-area">
-    <form action="." method="POST">
-        {% csrf_token %}
-    <div id="edit-area-left">
-        <table>
-          <tbody>
-            <tr>
-              <td class="edit-title">Фамилия:</td>
-              <td><input type="text" class="profileInputBox" name="second_name" value="{{user.second_name|default_if_none:""}}"/></td>
-            </tr>
-            <tr>
-              <td class="edit-title">Имя:</td>
-              <td><input type="text" class="profileInputBox" name="first_name" value="{{user.first_name|default_if_none:""}}"/></td>
-            </tr>
-            <tr>
-              <td class="edit-title">Отчество:</td>
-              <td><input type="text" class="profileInputBox" name="patronymic" value="{{user.patronymic|default_if_none:""}}"/></td>
-            </tr>
-            <tr>
-              <td class="edit-title">E-mail:</td>
-              <td><input type="text" class="profileInputBox" name="email" value="{{user.email|default_if_none:""}}" ></td>
-            </tr>
-          </tbody>
-        </table>
-    </div>
-    <div id="edit-area-right">
-      <table>
-          <tbody>
-            <tr>
-              <td class="edit-title">Телефон:</td>
-              <td><input type="text" class="profileInputBox" name="phone" value="{{user.phone|default_if_none:""}}"/></td>
-            </tr>
-          </tbody>
-        </table>
-    </div>
-    <div class="main">
-    <div id="profile-edit-save">
-        <button id="editSave">Сохранить профиль</button>
-    </div>
-</div>
+
+<div class="container">
+  <form class="form" id="b-form" method="POST" action="." style="width: 100%;height: 100%;">
+
+    {% csrf_token %}
+    <input class="form__input" type="text" placeholder="Имя" name="first_name" value="{{user.first_name|default_if_none:''}}">
+    <input class="form__input" type="text" placeholder="Фамилия" name="second_name" value="{{user.second_name|default_if_none:''}}">
+    <input class="form__input" type="text" placeholder="Отчество" name="patronymic" value="{{user.patronymic|default_if_none:''}}">
+    <input class="form__input" type="text" placeholder="Почта" name="email" value="{{user.email|default_if_none:''}}">
+    <input class="form__input" type="text" placeholder="Номер телефона" name="phone" value="{{user.phone|default_if_none:''}}">
+    <button class="form__button button" type="submit">Сохранить</button>
   </form>
-  </div>
+</div>
+
 {% endblock %}
 
 

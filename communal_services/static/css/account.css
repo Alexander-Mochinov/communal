@@ -35,13 +35,6 @@ img {
   margin-right: auto;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  height: 80px;
-  border-bottom: 1px solid var(--c-border-primary);
-  background-color: var(--c-background-primary);
-}
 
 .header-content {
   display: flex;
@@ -190,10 +183,6 @@ img {
   overflow: hidden;
 }
 
-.main {
-  padding-top: 3rem;
-}
-
 .main-header {
   display: flex;
   flex-wrap: wrap;
@@ -215,8 +204,6 @@ img {
   position: relative;
   display: flex;
   align-items: center;
-
-  max-width: 340px;
 }
 .search input {
   font: inherit;

@@ -12,73 +12,53 @@
 
 
 {% block content %}
-<div class="container">
-	<form class="row g-3" id="form" method="post" action="{% url 'indicators' %}">
-		{% csrf_token %}
-			<h3 style="text-align: center;">Форма адреса</h3>
-			<div class="col-12">
-				<label for="inputAddress" class="form-label">Город</label>
-				<input type="text" class="form-control" id="inputAddress" name="town" required>
-			</div>
-			<div class="col-12">
-				<label for="inputAddress" class="form-label">Улица</label>
-				<input type="text" class="form-control" id="inputAddress" name="street" required>
-			</div>
-			<div class="col-12">
-				<label for="inputAddress" class="form-label">Номер дома</label>
-				<input type="text" class="form-control" id="inputAddress" name="house" required>
-			</div>
-			<div class="col-12">
-				<label for="inputAddress" class="form-label">Номер квартиры</label>
-				<input type="text" class="form-control" id="inputAddress" name="apartment" required>
-			</div>
-		<div class="underline" style="margin-top: 130px;">
-			<h3 style="text-align: center;">Показатели</h3>
-			<div class="col-12">
-				<label for="inputAddress" class="form-label">Горячая вода</label>
-				<input type="text" class="form-control" id="inputAddress" name="INDICATORS_HOT_WATER" type="text" maxlength="15" value="">
-			</div>
-			<div class="col-12">
-				<label for="inputAddress" class="form-label">Холодная вода</label>
-				<input type="text" class="form-control" id="inputAddress" name="INDICATORS_COLD_WATER" type="text" maxlength="15" value="">
-			</div>
-			<div class="col-12">
-				<label for="inputAddress" class="form-label">Дневной период</label>
-				<input type="text" class="form-control" id="inputAddress" name="INDICATORS_LIGHT_DAY" type="text" maxlength="15" value="">
-			</div>
-			<div class="col-12">
-				<label for="inputAddress" class="form-label">Ночной период</label>
-				<input type="text" class="form-control" id="inputAddress" name="INDICATORS_LIGHT_NIGHT" type="text" maxlength="15" value="">
-			</div>
-		</div>
 
-    <button class="form__button button" type="submit">Отправить</button>
-	</form>
+<div class="table-responsive">
+	<table>
+		<thead>
+			<tr>
+				<th>Горячая вода</th>
+				<th>Холодная вода</th>
+				<th>Дневной период</th>
+				<th>Ночной период</th>
+				<th class="larger-box">Адрес по счётчику</th>
+			</tr>
+		</thead>
+		<tbody>
+            {% for indicator in parameters %}
+			<tr>
+				<td>{{ indicator.parameters.0 }}</a></td>
+				<td>{{ indicator.parameters.1 }}</a></td>
+				<td>{{ indicator.parameters.2 }}</a></td>
+				<td>{{ indicator.parameters.3 }}</a></td>
+				<td>{{indicator.parameters.1.address.town}}, {{indicator.parameters.1.address.street}}, {{indicator.parameters.1.address.house}}, {{indicator.parameters.1.address.apartment}}</td>
+			</tr>
+            {% endfor %}
+		</tbody>
+	</table>
 </div>
+<div class="container">
+	
+	<form class="form" id="b-form" method="POST" action="{% url 'indicators' %}" style="width: 100%;height: 100%;">
+		<h3 style="text-align: center;">Адрес объекта</h3>
+		{% csrf_token %}
+		<input class="form__input" type="text" name="town" required placeholder="Город">
+		<input class="form__input" type="text" name="street" required placeholder="Улица">
+		<input class="form__input" type="text" name="house" required placeholder="Номер дома">
+		<input class="form__input" type="text" name="apartment" required placeholder="Номер квартиры">
+		<h3 style="text-align: center;">Показатели</h3>
 
-<table class="standard-table" cellspacing ="0">
-	<thead>
-	  <tr>
-		<th>Горячая вода</th>
-		<th>Холодная вода</th>
-		<th>Дневной период</th>
-		<th>Ночной период</th>
-		<th class="larger-box">Адрес по счётчику</th>
-	  </tr>
-	</thead>
-	<tbody>
-		{% for indicator in indicators %}
-		<tr>
-			<td>{{indicator.indicator}}</td>
-			<td>{{indicator.indicator}}</td>
-			<td>{{indicator.indicator}}</td>
-			<td>{{indicator.indicator}}</td>
-			<td>{{indicator.address.town}}, {{indicator.address.street}}, {{indicator.address.house}}, {{indicator.address.apartment}}</td>
-		</tr>
-		{% endfor %}
-	</tbody>
-  </table>
+		<input class="form__input" type="text" name="INDICATORS_HOT_WATER" required placeholder="Горячая вода">
+		<input class="form__input" type="text" name="INDICATORS_COLD_WATER" required placeholder="Холодная вода">
+		<input class="form__input" type="text" name="INDICATORS_LIGHT_DAY" required placeholder="Свет (Дневной период)">
+		<input class="form__input" type="text" name="INDICATORS_LIGHT_NIGHT" required placeholder="Свет (Ночной период)">
 
+		<button class="form__button button" type="submit">Отправить</button>
+
+
+	</form>
+
+</div>
 
 {% endblock %}
 
